@@ -1,0 +1,46 @@
+﻿@page "/Converter"
+
+<h2>Converter</h2>
+<label>Enter a distance in kilometers</label>
+<input type="text" @bind="@kiloText" /> <br/>
+
+<button @onclick="ConvertDistance">Convert</button>
+
+<strong><label>Distance in miles: @distanceInMiles</label></strong>
+
+<br /><br />
+
+<div>
+    <h3>Checkbox demo</h3>
+    <div style="background-color:@(IsChecked ? "green" : "yellow") ; color: @(IsChecked ? "white" : "blue")">
+        <input type="checkbox" @bind="IsChecked" />
+    </div>
+</div>
+
+
+
+@*
+@bind is a directive used for two way binding between the control and property
+*@
+
+@code 
+{
+    private string kiloText;
+    private string distanceInMiles;
+
+    private void ConvertDistance()
+    {
+        const double CONVERSION = 0.6214;
+        distanceInMiles = (double.Parse(kiloText) * CONVERSION).ToString();
+    }
+
+    private bool _isChecked; // Datafield
+    public bool IsChecked // Property
+    {
+        get => _isChecked;
+        set
+        {
+            _isChecked = value;
+        }
+    }
+}

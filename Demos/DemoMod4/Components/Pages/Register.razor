@@ -1,0 +1,37 @@
+﻿@page "/register"
+
+
+
+<h3>Register</h3>
+@* <form> *@
+<EditForm Model="@emp">
+    <div class="form-group">
+        <label for="inputName1">Name</label>
+        <input type="text" class="form-control" id="inputName1" aria-describedby="emailHelp" placeholder="Name">
+    </div>
+    <div class="form-group">
+        <label for="inputEmail1">Email</label>
+        <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
+    </div>
+
+    <div>
+        <label for="country">Country: @emp.Country</label><br/>
+        <select @bind="emp.Country"class="form-select" aria-label="Default select example">
+            <option selected>Open this select menu</option>
+            @*@<option value="CA">Canada</option>
+            <option value="US">USA</option>
+            <option value="NZ">New Zealand</option> *@
+
+            @foreach(var item in countryNames)
+            {
+                <option value="@item.CID">item.CName</option> 
+            }
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+</EditForm>
+
+@code {
+    //Employee emp = new Employee(); // using code in this file works too (instead we're using Register.razor.cs)
+}

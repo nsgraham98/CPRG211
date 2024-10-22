@@ -1,0 +1,41 @@
+﻿Enter dog1 name:
+fido
+Dog Name: fido
+Color: Brown
+Age: 5
+Dogs eat meat.
+Enter cat1 name:
+whisker
+Cat Name: whisker
+Color: Black
+Age: 3
+Cats eat mice.
+Enter dog2 name:
+rex
+Enter dog2 height:
+30
+Enter dog2 color:
+brown
+Enter dog2 age:
+4
+Dog Name: rex
+Color: brown
+Age: 4, Height: 30
+Dogs eat meat.
+Woof!
+Enter cat2 name:
+oreo
+Enter cat2 height:
+15
+Enter cat2 color:
+white
+Enter cat2 age:
+10
+Cat Name: oreo
+Color: white
+Age: 10, Height: 15
+Cats eat mice.
+Meow!
+Animal 1 Name: oreo
+Animal 2 Name: rex
+Animal 3 Name: Bobby

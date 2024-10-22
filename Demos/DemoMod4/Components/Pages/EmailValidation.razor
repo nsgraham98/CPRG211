@@ -1,0 +1,39 @@
+﻿@page "/emailvalidation"
+@using DemoMod4.Data 
+
+<h3>EmailValidation</h3>
+<select @onchange="ShowEmail">
+    <option disabled>Select Email</option>
+    @foreach (var item in users)
+    {
+        <option value="@item.Email">@item.Id ------ item.Email</option>
+    }
+</select>
+<p>Selected Email: @selectedEmail</p>
+<br/>
+<button @onclick="ValidateEmail">Validate</button>
+<p>Message: @message</p>
+
+@code {
+    UserManager um = new UserManager();
+    List<User> users = UserManager.GetUsers(); //cannot use um.GetUsers() bc GetUsers() is static method
+
+    string selectedEmail;
+    string message;
+
+    void ShowEmail(ChangeEventArgs e)
+    {
+        selectedEmail = e.Value.ToString();
+    }
+    void ValidateEmail()
+    {
+        if(selectedEmail.Contains('@'))
+        {
+            message = "Valid Email";
+        }
+        else
+        {
+            message = "Invalid Email";
+        }
+    }
+}
