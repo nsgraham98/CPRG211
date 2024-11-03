@@ -1,4 +1,9 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Blazorise;
+using Microsoft.Extensions.Logging;
+using Blazorise;
+using Blazorise.Icons.FontAwesome;
+using Blazorise.Bootstrap;
+using System.IO;
 
 namespace Assignment2
 {
@@ -15,10 +20,11 @@ namespace Assignment2
                 });
 
             builder.Services.AddMauiBlazorWebView();
+            builder.Services.AddBlazorise().AddBootstrapProviders().AddFontAwesomeIcons();
 
 #if DEBUG
-    		builder.Services.AddBlazorWebViewDeveloperTools();
-    		builder.Logging.AddDebug();
+            builder.Services.AddBlazorWebViewDeveloperTools();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();
