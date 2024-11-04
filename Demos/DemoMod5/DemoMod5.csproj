@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>DemoMod5.MultipleException</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -48,6 +51,7 @@
     <Compile Include="CircleDemo.cs" />
     <Compile Include="Demo1.cs" />
     <Compile Include="InputMismatchException.cs" />
+    <Compile Include="InvalidRadiusException.cs" />
     <Compile Include="MultipleException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

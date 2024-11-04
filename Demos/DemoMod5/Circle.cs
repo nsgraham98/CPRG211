@@ -21,7 +21,9 @@ namespace DemoMod5
 				}
 				else
 				{
-					throw new ArgumentException("Radius cant be negative");
+					//throw new ArgumentException("Radius cant be negative");
+					//throw new InvalidRadiusException(); // calls non parameterized constructor
+					throw new InvalidRadiusException(value); // calls parameterized constructor
 				}
 			}
 		}
