@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34622.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoMod7", "DemoMod7.csproj", "{1C0D9042-5C02-4E3D-AB2E-9526A3C53727}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoMod7TEST", "..\DemoMod7TEST\DemoMod7TEST.csproj", "{138DE7E4-914F-4396-99D3-C4454FE8F1E2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1C0D9042-5C02-4E3D-AB2E-9526A3C53727}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C0D9042-5C02-4E3D-AB2E-9526A3C53727}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C0D9042-5C02-4E3D-AB2E-9526A3C53727}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C0D9042-5C02-4E3D-AB2E-9526A3C53727}.Release|Any CPU.Build.0 = Release|Any CPU
+		{138DE7E4-914F-4396-99D3-C4454FE8F1E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{138DE7E4-914F-4396-99D3-C4454FE8F1E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{138DE7E4-914F-4396-99D3-C4454FE8F1E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{138DE7E4-914F-4396-99D3-C4454FE8F1E2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0DACA2F1-4D92-48D0-9661-E1FE6826B33F}
+	EndGlobalSection
+EndGlobal
