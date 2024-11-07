@@ -19,38 +19,21 @@ namespace LeetCodeProblems
 
         public int[] TwoSum(int[] nums, int target)
         {
-            int index1 = 0;
-            int index2 = 0;
-
-            int[] ints = {0, 0};
+            int[] filler = { 0, 0 };
 
             foreach (int i in nums)
             {
-                foreach (int j in nums)
+                int diff = target - i;
+                int iIndex = Array.IndexOf(nums, i);
+                int matchingSumIndex = Array.IndexOf(nums, diff, iIndex+1);
+
+                if (matchingSumIndex > -1 && matchingSumIndex != iIndex)
                 {
-
-                    if (index1 == index2)
-                    {
-                        index2 ++;
-                        continue;
-                    }
-                    else
-                    {
-                        if (j + i == target)
-                        {
-                            //int index1 = ;
-                            //int index2 = ;
-                            int[] foundIndex = { index1, index2 };
-                            return foundIndex;
-                        }
-                        index2 ++;
-                    }                 
+                    int[] ints = {iIndex, matchingSumIndex};
+                    return ints;
                 }
-                index2 = 0;
-                index1 ++;
             }
-
-            return ints;
+            return filler;
         }
 
         static void Main(string[] args)
@@ -58,12 +41,16 @@ namespace LeetCodeProblems
             int[] i1 = { 2, 7, 11, 15 };
             FindTwoSum test1 = new FindTwoSum(i1, 18);
 
-            int[] i2 = {3,3};
+            int[] i2 = {3,2,4};
             FindTwoSum test2 = new FindTwoSum(i2, 6);
 
+            int[] i3 = { 3,3};
+            FindTwoSum test3 = new FindTwoSum(i3, 6);
 
-            Console.WriteLine($"{test1.TwoSum(i1, 18)[0]},{test1.TwoSum(i1, 18)[1]}");
+
+            //Console.WriteLine($"{test1.TwoSum(i1, 18)[0]},{test1.TwoSum(i1, 18)[1]}");
             //Console.WriteLine($"{test2.TwoSum(i2, 6)[0]},{test2.TwoSum(i2, 6)[1]} ");
+            Console.WriteLine($"{test3.TwoSum(i3, 6)[0]},{test3.TwoSum(i3, 6)[1]} ");
             Console.ReadLine();
         }
 

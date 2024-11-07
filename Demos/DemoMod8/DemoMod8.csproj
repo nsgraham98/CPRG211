@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B58E3C5A-F082-408A-9D0B-63C2EA000216}</ProjectGuid>
+    <ProjectGuid>{57FF3B31-27E7-42FB-8D05-95E91C960619}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>LeetCodeProblems</RootNamespace>
-    <AssemblyName>LeetCodeProblems</AssemblyName>
+    <RootNamespace>DemoMod8</RootNamespace>
+    <AssemblyName>DemoMod8</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>LeetCodeProblems.ValidParentheses</StartupObject>
+    <StartupObject>DemoMod8.Driver</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -46,13 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CheckIsPalindrome.cs" />
-    <Compile Include="FindTwoSum.cs" />
-    <Compile Include="LongestCommonPrefix.cs" />
+    <Compile Include="Driver.cs" />
+    <Compile Include="Node.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RomanNumeralConversion.cs" />
-    <Compile Include="ValidParentheses.cs" />
+    <Compile Include="SLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
