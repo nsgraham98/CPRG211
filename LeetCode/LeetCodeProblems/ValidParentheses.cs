@@ -8,7 +8,7 @@ namespace LeetCodeProblems
 {
     internal class ValidParentheses
     {
-        //public string s = "()";
+        public string s = "()";
         //public string s = "()[]{}";
         //public string s = "(]";
         //public string s = "([])";
@@ -16,16 +16,68 @@ namespace LeetCodeProblems
         //public string s = "]";
         //public string s = "(([]){})";
         //public string s = "[{([[]]})";
-        public string s = "[([]])";
+        //public string s = "[([]])";
 
         public bool IsValid(string s)
         {
-            
+            Stack<char> stack = new Stack<char>();
+            try
+            {
+                foreach (char c in s)
+                {
+                    switch (c)
+                    {
+                        case '(':
+                            stack.Push(c);
+                            break;
+
+                        case '[':
+                            stack.Push(c);
+                            break;
+
+                        case '{':
+                            stack.Push(c);
+                            break;
+
+                        case '}':
+                            if (stack.Peek() != '{')
+                            {
+                                return false;
+                            }
+                            stack.Pop();
+                            break;
+
+                        case ']':
+                            if (stack.Peek() != '[')
+                            {
+                                return false;
+                            }
+                            stack.Pop();
+                            break;
+
+                        case ')':
+                            if (stack.Peek() != '(')
+                            {
+                                return false;
+                            }
+                            stack.Pop();
+                            break;
+
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            if (stack.Count > 0) { return false; }
+            return true;
         }
         static void Main(string[] args)
         {
             ValidParentheses vp = new ValidParentheses();
-            vp.IsValid(vp.s);
+            Console.WriteLine(vp.IsValid(vp.s));
+            Console.ReadLine();
         }
     }
 }

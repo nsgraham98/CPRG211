@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>LeetCodeProblems.ValidParentheses</StartupObject>
+    <StartupObject>LeetCodeProblems.CircularArrayDefuseTheBomb</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -46,12 +46,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArrayPlusOneInteger.cs" />
+    <Compile Include="ArrayRemoveElement.cs" />
+    <Compile Include="BinarySearchInsertPosition.cs" />
+    <Compile Include="BinaryTreeTest.cs" />
     <Compile Include="CheckIsPalindrome.cs" />
+    <Compile Include="CircularArrayDefuseTheBomb.cs" />
+    <Compile Include="ClimbingStairs.cs" />
+    <Compile Include="FindSqrt.cs" />
+    <Compile Include="LinkedListDeleteDuplicates.cs" />
     <Compile Include="FindTwoSum.cs" />
+    <Compile Include="LinkedListCycle.cs" />
+    <Compile Include="ListNode.cs" />
     <Compile Include="LongestCommonPrefix.cs" />
+    <Compile Include="LinkedListMergeTwoSorted.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RemoveDupesFromSortedArray.cs" />
     <Compile Include="RomanNumeralConversion.cs" />
+    <Compile Include="StringAddBinary.cs" />
+    <Compile Include="StringFindIndexOfFirstOccurance.cs" />
+    <Compile Include="StringLengthOfLastWord.cs" />
     <Compile Include="ValidParentheses.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -8,57 +8,64 @@ namespace LeetCodeProblems
 {
     internal class LongestCommonPrefix1
     {
-        //string[] strs = { "flower", "flow", "flight" };
+        string[] strs = { "flower", "flow", "flight" };
         //string[] strs = { "dog", "racecar", "car" };
         //string[] strs = { "a" };
         //string[] strs = { "cir", "car" };
         //string[] strs = { "ab", "a" };
         //string[] strs = { "flower", "flower", "flower", "flower" };
-        string[] strs = { "c", "acc", "ccc" };
+        //string[] strs = { "c", "acc", "ccc" };
 
-        public string LongestCommonPrefix(string[] strs) // come back to this - doesnt work for all cases
+        public string LongestCommonPrefix(string[] strs)
         {
-            int validCount = 0;
-            int searchLength = 1;
-            string baseWord = strs[0].Substring(0);
-            string matchedChars = "";
-            int maxIndex = strs[0].Length;
+            string initialString = strs[0];
+            Stack<char> charStack = new Stack<char>();
+            string finalString = "";
 
-            for (int i = 0; i < strs.Length; i++)
+            try
             {
-                if (strs[i].Length < maxIndex)
+                for (int j = 0; j < initialString.Length; j++)
                 {
-                    maxIndex = strs[i].Length;
-                }
-
-                string tempMatchedChars = "";
-                string foreignWord = strs[i];
-
-                for (int j = 0; j < maxIndex; j++)
-                {            
-                    if (foreignWord.Substring(j,1) == baseWord.Substring(j,1))
+                    charStack.Push(initialString[j]);
+                    for (int i = 0; i < strs.Length; i++)
                     {
-                        tempMatchedChars += foreignWord.Substring(j,1);
-                        matchedChars = tempMatchedChars;
+                        if (char.Parse(strs[i].Substring(j, 1)).Equals(charStack.Peek()))
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            charStack.Pop();
+                            foreach (char c in charStack)
+                            {
+                                finalString = $"{c}{finalString}";
+                            }
+                            return finalString;
+                        }
                     }
-                    else
-                    {
-                        matchedChars = tempMatchedChars;
-                    }          
-                }
-                //strs.Length == 1 || strs[i].Length == 1
-                if ((tempMatchedChars.Length <= matchedChars.Length) || matchedChars == "")
-                {
-                    matchedChars = tempMatchedChars;
                 }
             }
-            return matchedChars;
+            catch (Exception)
+            {
+                charStack.Pop();
+                foreach (char c in charStack)
+                {
+                    finalString = $"{c}{finalString}";
+                }
+                return finalString;
+            }
+            foreach (char c in charStack)
+            {
+                finalString = $"{c}{finalString}";
+            }
+            return finalString;
         }
+
         static void Main(string[] args)
         {
             LongestCommonPrefix1 test = new LongestCommonPrefix1();
-            test.LongestCommonPrefix(test.strs);
-
+            Console.WriteLine(test.LongestCommonPrefix(test.strs));
+            Console.ReadLine(); 
         }
     }
 }
