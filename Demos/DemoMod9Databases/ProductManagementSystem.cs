@@ -13,7 +13,7 @@ namespace DemoMod9Databases
         SqlConnection conn;
         public ProductManagementSystem()
         {
-            connString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Library4;Integrated Security=True";
+            connString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Library;Integrated Security=True";
             conn = new SqlConnection(connString);
             conn.Open();
         }
