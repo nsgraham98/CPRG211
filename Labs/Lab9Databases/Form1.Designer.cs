@@ -256,6 +256,7 @@
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.Size = new System.Drawing.Size(248, 150);
 			this.dataGridView1.TabIndex = 6;
+			
 			// 
 			// tutorialIDDataGridViewTextBoxColumn
 			// 

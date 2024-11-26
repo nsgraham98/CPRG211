@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>LeetCodeProblems.TakeEachCharFromLeftAndRight</StartupObject>
+    <StartupObject>LeetCodeProblems.AddTwoLLNums.Solution</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddTwoLLNums.cs" />
     <Compile Include="ArrayPlusOneInteger.cs" />
     <Compile Include="ArrayRemoveElement.cs" />
     <Compile Include="BinarySearchInsertPosition.cs" />
