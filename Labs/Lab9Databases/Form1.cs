@@ -61,6 +61,8 @@ namespace Lab9Databases
 
 		private void Update_Click(object sender, EventArgs e)
 		{
+
+
 			string idValue = txtID.Text;
 			string nameValue = txtName.Text;
 
