@@ -14,7 +14,5 @@ namespace DemoMod9SQLiteWithoutExtension.Data
 		public string Name { get; set; }
 		public int Quantity { get; set; }
 		public int Price { get; set; }
-
-
 	}
 }

@@ -34,8 +34,10 @@ namespace Lab9Databases
 
 		private void button1_Click_1(object sender, EventArgs e)
 		{
+
 			using (SqlConnection conn = new SqlConnection(connectionString))
 			{
+				conn.Open();
 				MessageBox.Show("Connection Open!");
 			}
 		}
@@ -49,6 +51,7 @@ namespace Lab9Databases
 
 			using (SqlConnection conn = new SqlConnection(connectionString))
 			{
+				conn.Open();
 				using (SqlCommand command = new SqlCommand(query, conn))
 				{
 					command.Parameters.AddWithValue("@TutorialID", idValue);
@@ -57,6 +60,7 @@ namespace Lab9Databases
 					command.ExecuteNonQuery();
 				}
 			}
+			LoadData();
 		}
 
 		private void Update_Click(object sender, EventArgs e)
@@ -68,6 +72,7 @@ namespace Lab9Databases
 
 			using (SqlConnection conn = new SqlConnection(connectionString))
 			{
+				conn.Open();
 				using (SqlCommand command = new SqlCommand(query, conn))
 				{
 					command.Parameters.AddWithValue("@TutorialID", idValue);
@@ -76,12 +81,43 @@ namespace Lab9Databases
 					command.ExecuteNonQuery();
 				}
 			}
-
+			LoadData();
 		}
 
 		private void Delete_Click(object sender, EventArgs e)
 		{
+			string idValue = txtID.Text;
+			string nameValue = txtName.Text;
 
+			string query = "Delete from demotb where TutorialID=@TutorialID";
+
+			using (SqlConnection conn = new SqlConnection(connectionString))
+			{
+				conn.Open();
+				using (SqlCommand command = new SqlCommand(query, conn))
+				{
+					command.Parameters.AddWithValue("@TutorialID", idValue);
+					command.ExecuteNonQuery();
+				}
+			}
+			LoadData();
+		}
+
+		private void LoadData()
+		{
+			string query = "select * from demotb";
+
+			using (SqlConnection conn = new SqlConnection(connectionString))
+			{
+				conn.Open();
+				SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+
+				DataTable dataTable = new DataTable();
+
+				adapter.Fill(dataTable);
+
+				dataGridView1.DataSource = dataTable;
+			}
 		}
 	}
 }

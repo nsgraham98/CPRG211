@@ -46,6 +46,7 @@ namespace DemoMod9SQLiteWithoutExtension.Services
 		}
 
 		// retrieve a record based on ProductId
+		// select * from Product where .... = prodId
 		public async Task<ProductInfo> GetProductAsync(int prodId)
 		{
 			return await conn.Table<ProductInfo>().Where(p => p.ProdId == prodId).FirstOrDefaultAsync();
