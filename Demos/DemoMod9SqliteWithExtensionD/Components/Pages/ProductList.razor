@@ -1,0 +1,96 @@
+﻿@page "/prodlist"
+@using DemoMod9SqliteWithExtensionD.Data
+@inject NavigationManager navigationManager
+
+
+
+<h3>Product List</h3>
+<section>
+
+    <button class="btn btn-primary" @onclick="AddNewProduct">Add New</button>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var m in productList)
+            {
+                <tr>
+                    <td>@m.ProdId</td>
+                    <td>@m.ProdName</td>
+                    <td>@m.ProdQty</td>
+                    <td>@m.ProdPrice</td>
+                    <td>
+                        <button class="btn btn-info" @onclick="()=>UpdateProduct(m)">Edit</button>
+                        <button class="btn btn-danger" @onclick="()=>RemoveProduct(m)">Delete</button>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</section>
+
+
+
+@code {
+    List<Product> productList = ProductManager.Retriveproduct();
+    int prodId;
+    string prodName;
+    int prodQty;
+    int prodPrice;
+    bool edit = false;
+    bool delete = false;
+    string message;
+
+
+    protected async override void OnInitialized()
+    {
+        base.OnInitialized();
+        Product prodInfo = new Product();
+        if (prodId > 0)
+        {
+            prodId = prodInfo.ProdId;
+            prodName = prodInfo.ProdName;
+            prodQty = prodInfo.ProdQty;
+            prodPrice = prodInfo.ProdPrice;
+            this.StateHasChanged();
+        }
+    }
+    public void AddNewProduct()
+    {
+        navigationManager.NavigateTo("addupdateproduct");
+    }
+    public void Loadproduct(Product product)
+    {
+        edit = true;
+        prodId = product.ProdId;
+        prodName = product.ProdName;
+        prodQty = product.ProdQty;
+        prodPrice = product.ProdPrice;
+    }
+    void UpdateProduct(Product product)
+    {
+        navigationManager.NavigateTo($"updateproduct/{product.ProdId}/{product.ProdName}/{product.ProdQty}/{product.ProdPrice}");
+        message = ProductManager.EditProduct(product.ProdId, product.ProdName, product.ProdQty, product.ProdPrice);
+        edit = false;
+    }
+
+    //Delete Button
+    void RemoveProduct(Product product)
+    {
+        prodId = product.ProdId;
+        message = ProductManager.DeleteProduct(prodId);
+        delete = true;
+    }
+
+
+
+}

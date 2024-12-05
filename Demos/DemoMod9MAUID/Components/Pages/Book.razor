@@ -1,0 +1,68 @@
+﻿@page "/book"
+@using DemoMod9MAUID.Data
+@using Microsoft.Data.SqlClient
+
+<h3>Book</h3>
+<center>
+	<h1>Add a Book to the Collection</h1>
+</center>
+
+<form>
+
+	<div class="row">
+		<div class="col">
+			<label for="validationDefault04">Book ID:</label>
+			<input type="text" class="form-control form-control-sm" id="bookID" placeholder="Book ID #" name="bookID" @bind="@book.BookID">
+		</div>
+		<div class="col">
+			<label for="validationDefault05">Title:</label>
+			<input type="text" class="form-control form-control-sm" id="title" placeholder="The Great Gatsby" name="title" @bind="@book.Booktitle">
+		</div>
+		<div class="col">
+			<label for="validationDefault05">Author:</label>
+			<input type="text" class="form-control form-control-sm" id="author" placeholder="F. Scott Fitzgerald" name="author" @bind="@book.Bookauthor">
+		</div>
+	</div>
+	<br /><div class="row">
+		<div class="col">
+			<label for="validationDefault05">Price:</label>
+			<input type="text" class="form-control form-control-sm" id="price" placeholder="$10.00" name="price" @bind="@book.Price">
+		</div>
+		<div class="col">
+			<label for="validationDefault05">Quantity:</label>
+			<input type="text" class="form-control form-control-sm" id="quantity" placeholder="10" name="quantity" @bind="@book.Quantity">
+		</div>
+
+		<br /><br /><br /><br /><button type="button" class="btn btn-primary btn-lg btn-block" @onclick="AddNewBook">Add Book</button>
+
+	</div>
+</form>
+
+<br />
+
+
+@code {
+	public DBook book = new DBook();
+
+	private async void AddNewBook()
+	{
+		string connectbooks = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Library5;Integrated Security=True";
+		SqlConnection connection = new SqlConnection(connectbooks);
+
+		connection.Open();
+
+		SqlCommand cmd = new SqlCommand("INSERT into book(BookID, BookTitle, BookAuthor, Price, Quantity) values (@BookID, @Booktitle, @Bookauthor, @Price, @Quantity)", connection);
+		//AddWithValue is used whenever you want to add a parameter by specifying its name and value
+		cmd.Parameters.AddWithValue("@BookID", book.BookID);
+		cmd.Parameters.AddWithValue("@Booktitle", book.Booktitle);
+		cmd.Parameters.AddWithValue("@Bookauthor", book.Bookauthor);
+		cmd.Parameters.AddWithValue("@Price", book.Price);
+		cmd.Parameters.AddWithValue("@Quantity", book.Quantity);
+
+		cmd.ExecuteNonQuery();
+
+		await Application.Current.MainPage.DisplayAlert("Success", "Book Successfully Added", "OK");
+
+	}
+
+}

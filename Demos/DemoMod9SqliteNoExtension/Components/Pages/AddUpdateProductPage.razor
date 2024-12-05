@@ -1,0 +1,89 @@
+﻿@page "/addupdateproduct"
+@page "/updateproduct/{ProductId:int}"
+
+@using DemoMod9SqliteNoExtension.Data
+@using DemoMod9SqliteNoExtension.Services
+@inject ProductService prodService
+@inject NavigationManager navigationManager
+
+
+<h3>Add Update Product </h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label">Product ID:</label>
+            <input type="text" @bind="productId" class="form-control" placeholder="Product ID" readonly />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Product Name:</label>
+            <input type="text" @bind="productName" class="form-control" placeholder="Product Name" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Product Qty:</label>
+            <input type="text" @bind="prodQty" class="form-control" placeholder="Product Quantity" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Product Price:</label>
+            <input type="text" @bind="prodPrice" class="form-control" placeholder="Product Price" />
+        </div>
+        <button type="submit" class="btn btn-sm btn-success" @onclick="AddProductInfo">Submit</button>
+        <button type="submit" class="btn btn-sm btn-info" @onclick="BackToList">Back</button>
+
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public int ProductId { get; set; } //Must be public
+
+    int productId = 0;
+    string productName = "";
+    int prodQty = 0;
+    int prodPrice = 0;
+
+    protected override async void OnInitialized()
+    {
+        base.OnInitialized(); //Didnt put ()
+        productId = ProductId; // ProductId is the parameter
+        if (productId > 0)
+        {
+            var response = await prodService.GetProductAsync(productId);
+            productName = response.ProdName;
+            prodQty = response.ProdQty;
+            prodPrice = response.ProdPrice;
+            this.StateHasChanged();
+        }
+    }
+
+    public async void AddProductInfo()
+    {
+        var prod = new ProductInfo();
+        prod.ProdId = productId;
+        prod.ProdName = productName;
+        prod.ProdQty = prodQty;
+        prod.ProdPrice = prodPrice;
+
+        var response = await prodService.AddUpdateProductAsync(prod);
+        if (response)
+        {
+            //Insert
+            if (productId == 0)
+            {
+                await App.Current.MainPage.DisplayAlert("Saved", "Insert Success", "OK");
+            }
+            else //update
+            {
+                await App.Current.MainPage.DisplayAlert("Update", "Update Success", "OK");
+            }
+            //navigationMangager.NavigateTo("prodlist");
+        }
+         
+    }
+
+    public void BackToList()
+    {
+        navigationManager.NavigateTo("prodlist");
+    }
+
+
+}

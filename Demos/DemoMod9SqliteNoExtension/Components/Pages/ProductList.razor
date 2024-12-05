@@ -1,0 +1,71 @@
+﻿@page "/prodlist"
+
+@using DemoMod9SqliteNoExtension.Data
+@using DemoMod9SqliteNoExtension.Services
+@inject ProductService prodService
+@inject NavigationManager navigationMangager
+
+<h3>ProductList</h3>
+@if (prodList == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+	<button class="btn btn-primary" @onclick="AddNewProduct">Add New</button>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Qty</th>
+				<th>Price</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var prod in prodList)
+			{
+				<tr>
+					<td>@prod.ProdId</td>
+					<td>@prod.ProdName</td>
+					<td>@prod.ProdQty</td>
+					<td>@prod.ProdPrice</td>
+					<td>
+						<button class="btn btn-info" @onclick=@(() => UpdateProduct(prod))>Edit</button>
+						<button class="btn btn-info" @onclick=@(() => DeleteProduct(prod))>Delete</button>
+
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+}
+
+
+@code {
+    public IEnumerable<ProductInfo> prodList;
+
+    //Error was here
+	protected override async Task OnInitializedAsync()
+    {
+        prodList = await prodService.GetProductAsync(); 
+    }
+
+    public void AddNewProduct()
+    {
+        navigationMangager.NavigateTo("addupdateproduct");    
+    }
+
+    public void UpdateProduct(ProductInfo prodInfo)
+    {
+        navigationMangager.NavigateTo($"updateproduct/{prodInfo.ProdId}");    
+    }
+    public async void DeleteProduct(ProductInfo prodInfo)
+    {
+        await prodService.DeleteProductAsync(prodInfo.ProdId);
+        prodList = await prodService.GetProductAsync();
+        this.StateHasChanged();
+    }
+
+}
